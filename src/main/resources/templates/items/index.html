@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<link rel="stylesheet" href="mysite.css">
+<link rel="stylesheet" href="http://www.htmlbook.ru/main.css">
+<div th:each="el : ${items}">
+    <h2 th:text="${el.name}"></h2>
+    <h3 th:text="${el.damage}"></h3>
+    <a th:href="'/items/' + ${el.id}">Прочитать</a>
+</div>
+<form method="get" action="/items/search">
+    <input type="text" name="name" id="name">
+    <input type="submit" value="Найти">
+</form>
+<a href="/items/add" class="btn btn-primary">Добавить предмет</a>
+
+</body>
+</html>

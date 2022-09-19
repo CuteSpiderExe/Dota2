@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dota</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<div th:each="el : ${dota}">
+  <h2 th:text="${el.name}"></h2>
+  <p th:text="${el.hp}"></p><br>
+  <p th:text="${el.mana}"></p>
+  <p th:text="${el.damage}"></p>
+  <a th:href="'/dota/del/'+ ${el.id}" class="btn btn-danger">Удалить</a>
+  <a th:href="'/dota/edit/'+ ${el.id}" class="btn btn-warning">Изменить</a>
+
+</div>
+
+<a href="/dota/" class="btn btn-primary">Назад к героям</a>
+
+</body>
+</html>

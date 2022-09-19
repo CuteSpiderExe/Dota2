@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dota</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="fragments/header :: defaultheader"></div>
+<form th:object="${dota}" action="/dota/add" method="post">
+<p>Название
+    <input th:field="*{name}" type="text" id="name" name="name" placeholder="Название"><br>
+    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+    <p>Здоровье
+    <input type="number" th:field="*{hp}" id="hp" name="hp" placeholder="Количество здоровья"><br>
+    <div th:if="${#fields.hasErrors('hp')}" th:errors="*{hp}"></div>
+    </p>
+    <p>Мана
+    <input type="number" th:field="*{mana}" id="mana" name="mana" placeholder="Количество маны"><br>
+    <div th:if="${#fields.hasErrors('mana')}" th:errors="*{mana}"></div>
+    </p>
+    <p>Урог
+    <input type="number" th:field="*{damage}" id="damage" name="damage" placeholder="Урон"><br>
+    <div th:if="${#fields.hasErrors('damage')}" th:errors="*{damage}"></div>
+    </p>
+    <input type="submit" value="Добавить персонажа" class="btn btn-success"><br>
+</form>
+
+<a href="/dota/" class="btn btn-primary">Назад</a>
+
+</body>
+</html>

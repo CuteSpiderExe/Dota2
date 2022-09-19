@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<div th:each="el : ${items}">
+    <h2 th:text="${el.name}"></h2>
+    <p th:text="${el.damage}"></p>
+    <a th:href="'/items/del/'+ ${el.id}" class="btn btn-danger">Удалить</a>
+    <a th:href="'/items/edit/'+ ${el.id}" class="btn btn-warning">Изменить</a>
+
+</div>
+
+<a href="/items/" class="btn btn-primary">Назад к предметам</a>
+
+</body>
+</html>

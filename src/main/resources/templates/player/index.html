@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Player</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<link rel="stylesheet" href="mysite.css">
+<link rel="stylesheet" href="http://www.htmlbook.ru/main.css">
+<div th:each="el : ${player}">
+  <h2 th:text="${el.name}"></h2>
+  <a th:href="'/player/' + ${el.id}">Прочитать</a>
+</div>
+<form method="get" action="/player/search">
+  <input type="text" name="name" id="name">
+  <input type="submit" value="Найти">
+</form>
+<a href="/player/add" class="btn btn-primary">Добавить игрока</a>
+
+</body>
+</html>

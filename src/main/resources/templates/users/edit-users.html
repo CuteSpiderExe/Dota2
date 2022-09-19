@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div th:insert="fragments/header :: defaultheader"></div>
+<head>
+  <title>Users info</title>
+</head>
+<body>
+
+<form action="/admin" method="post">
+  <div th:each="el:${one_user}">
+    <input type="hidden" th:value="${el.id}" name="userId">
+    <input type="text" th:value="${el.username}" name="username">
+  </div>
+  <div th:each="role:${roles}">
+    <div th:each="user:${one_user}">
+      <input th:id="${role}"
+             type="checkbox"
+             th:name="${'roles[]'}"
+             th:value="${role}"
+             th:checked="${#lists.contains(user.roles, role)}">
+      <label th:text="${role}"/>
+    </div>
+  </div>
+  <input type="submit" value="Изменить роль">
+</form>
+
+
+
+</body>
+</html>

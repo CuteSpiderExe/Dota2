@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Atribut</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="fragments/header :: defaultheader"></div>
+<form th:object="${atribut}" action="/atribut/add" method="post">
+  <p>Название
+    <input th:field="*{name}" type="text" id="name" name="name" placeholder="Название"><br>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+  <input type="submit" value="Добавить атрибут" class="btn btn-success"><br>
+</form>
+
+<a href="/atribut/" class="btn btn-primary">Назад</a>
+
+</body>
+</html>

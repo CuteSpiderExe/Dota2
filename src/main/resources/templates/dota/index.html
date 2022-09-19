@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dota</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:insert="fragments/header :: defaultheader"></div>
+<link rel="stylesheet" href="mysite.css">
+<link rel="stylesheet" href="http://www.htmlbook.ru/main.css">
+<div th:each="el : ${dota}">
+    <h2 th:text="${el.name}"></h2>
+    <h3 th:text="${el.hp}"></h3>
+    <h4 th:text="${el.mana}"></h4>
+    <h5 th:text="${el.damage}"></h5>
+    <a th:href="'/dota/' + ${el.id}">Прочитать</a>
+</div>
+<form method="get" action="/dota/search">
+    <input type="text" name="name" id="name">
+    <input type="submit" value="Найти">
+</form>
+<a href="/dota/add" class="btn btn-primary">Добавить персонажа</a>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:insert="fragments/header :: defaultheader"></div>
+<div th:each="el : ${items}" th:object="${items}">
+    <form th:action="'/items/edit/' + ${el.id}" method="post">
+        <p>Название
+            <input type="text" th:value="${el.name}" th:field="*{name}" id="name" name="name" placeholder="Название"><br>
+        <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+        </p>
+        <p>Урон
+            <input type="number" th:value="${el.damage}" th:field="*{damage}" id="damage" name="damage" placeholder="Урон"><br>
+        <div th:if="${#fields.hasErrors('damage')}" th:errors="*{damage}"></div>
+        </p>
+        <input type="submit" value="Изменить предмет" class="btn btn-success"><br>
+    </form>
+</div>
+</body>
+</html>
